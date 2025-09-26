@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Timer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .timer-container {
+            background: #f8f0fb;
+            padding: 1.5rem;
+            border-radius: 20px;
+            width: 90vw;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 5px 15px rgba(168, 129, 197, 0.1);
+            border: 1px solid #f0e1f7;
+        }
+
+        .romantic-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            color: #d14d7a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .timer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .time-unit {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 12px;
+            flex: 1 1 20%;
+            min-width: 100px;
+            max-width: 125px;
+            box-shadow: 0 3px 10px rgba(168, 129, 197, 0.1);
+            border: 2px solid #f4d9e8;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .time-unit:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(209, 77, 122, 0.2);
+            background: #fff5f9;
+        }
+
+        .number {
+            color: #d14d7a;
+            font-weight: bold;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            line-height: 1.2;
+            background: linear-gradient(45deg, #d14d7a, #e86a92);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .label {
+            color: #a86a8e;
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        @media (min-width: 768px) {
+            .timer {
+                flex-wrap: nowrap;
+                gap: 1.5rem;
+            }
+            
+            .time-unit {
+                flex: 1 1 auto;
+                max-width: 200px;
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timer-container {
+                width: 95vw;
+                padding: 1rem;
+            }
+            
+            .time-unit {
+                flex: 1 1 40%;
+                min-width: 80px;
+                padding: 0.8rem;
+            }
+            
+            .number {
+                font-size: clamp(1.2rem, 5vw, 2rem);
+            }
+
+            .label {
+                font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timer-container">
+        <h1 class="romantic-title">Our Love Journey</h1>
+        <div class="timer">
+            <div class="time-unit">
+                <div class="number" id="days">00</div>
+                <div class="label">Days</div>
+            </div>
+            <div class="time-unit">
+                <div class="number" id="hours">00</div>
+                <div class="label">Hours</div>
+            </div>
+            <div class="time-unit">
+                <div class="number" id="minutes">00</div>
+                <div class="label">Minutes</div>
+            </div>
+            <div class="time-unit">
+                <div class="number" id="seconds">00</div>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const startDate = new Date('2025-03-26T00:00:00');
+
+        function updateTimer() {
+            const currentDate = new Date();
+            const difference = currentDate - startDate;
+
+            let seconds = Math.floor(difference / 1000);
+            let minutes = Math.floor(seconds / 60);
+            let hours = Math.floor(minutes / 60);
+            let days = Math.floor(hours / 24);
+
+            seconds %= 60;
+            minutes %= 60;
+            hours %= 24;
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
