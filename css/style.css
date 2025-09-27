@@ -1,0 +1,206 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  min-width: 100vw;
+  background: #f8f0fb;
+}
+.controls{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  min-width: 90vw;
+  flex-wrap: wrap;
+  margin: 1vh auto;
+  row-gap: 1vh;
+}
+.controls button{
+  width: 13em;
+  height: 5.5vh;
+}
+.actv-btn{
+  background: hsl(299.3,47.7%,67.4%);
+  color: white;
+}
+.container{
+  height: 1fr;
+  width: 80vw;
+  padding: 1vh 1.5vw;
+  border: 2px solid black;
+  margin: 1vh auto;
+}
+#notes-container, #gallery-container, #letter-container{
+  display: none;
+}
+#dt-container{
+  display: flex;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  width: 99vw;
+  height: 30vh;
+}
+
+
+.timer-container {
+  background: #f8f0fb;
+  padding: 1.5rem;
+  border-radius: 20px;
+  width: 90vw;
+  max-width: 700px;
+  margin: auto;
+  box-shadow: 0 5px 15px rgba(168, 129, 197, 0.1);
+  border: 1px solid #f0e1f7;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.romantic-title, #journey-msg-container h2{
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  color: #d14d7a;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.timer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.time-unit {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  flex: 1 1 20%;
+  min-width: 100px;
+  max-width: 120px;
+  box-shadow: 0 3px 10px rgba(168, 129, 197, 0.1);
+  border: 2px solid #f4d9e8;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.time-unit:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(209, 77, 122, 0.2);
+  background: #fff5f9;
+}
+
+.number {
+  color: #d14d7a;
+  font-weight: bold;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
+  line-height: 1.2;
+  background: linear-gradient(45deg, #d14d7a, #e86a92);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.label {
+  color: #a86a8e;
+  font-size: clamp(0.7rem, 3vw, 0.9rem);
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .timer {
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+  }
+    
+  .time-unit {
+    flex: 1 1 auto;
+    max-width: 200px;
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timer-container {
+    width: 95vw;
+    padding: 1rem;
+  }
+    
+  .time-unit {
+    flex: 1 1 40%;
+    min-width: 80px;
+    padding: 0.8rem;
+  }
+   
+  .number {
+    font-size: clamp(1.2rem, 5vw, 2rem);
+  }
+   
+  .label {
+    font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+  }
+}
+#btn-container{
+  width: 100%;
+  text-align: center;
+}
+#journey-btn{
+  margin: min(1vh, 50px) 0;
+  min-width: 150px;
+  max-width: 250px;
+  min-height: 50px;
+  max-height: 100px;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1rem, 3vw, 0.9rem);
+  box-shadow: 0 3px 10px rgba(168, 129, 197, 0.1);
+  border: 2px solid #f4d9e8;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #d14d7a;
+}
+#journey-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(209, 77, 122, 0.2);
+  background: #fff5f9;
+  transition: all 0.3s ease;
+}
+#journey-msg-container {
+  transition: all 0.3s ease-in-out; /* Transition all properties for a smooth effect */
+  transform-origin: top left; /* Set the origin for scaling */
+  overflow: scroll; /* Prevent content overflow during transition */
+  max-height: 0; /* Initially set max-height to 0 */
+  opacity: 0; /* Initially set opacity to 0 */
+  transform: scale(0); /* Initially set scale to 0 */
+  margin: min(10px) auto;
+}
+
+#journey-msg-container.hidden {
+  max-height: 0;
+  opacity: 0;
+  transform: scale(0);
+}
+
+#journey-msg-container:not(.hidden) {
+  max-height: 500px; /* Adjust as needed */
+  opacity: 1;
+  transform: scale(1);
+}
+#journey-msg-container p{
+  color: #a86a8e;
+  font-size: clamp(0.7rem, 3vw, 0.9rem);
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+#journey-msg-container h2{
+  margin-bottom: 0;
+}
