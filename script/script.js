@@ -10,6 +10,11 @@ const notesCntr = document.getElementById("notes-container")
 const galleryCntr = document.getElementById("gallery-container")
 const letterCntr = document.getElementById("letter-container")
 
+dateTimeCntr.style.display = "block"
+notesCntr.style.display = "none"
+galleryCntr.style.display = "none"
+letterCntr.style.display = "none"
+
 //controls
 function showDateTime(){
   dateTimeCntr.style.display = "block"
