@@ -73,7 +73,7 @@ body{
 }
 
 
-.timer-container, #gallery-container, #notes-container, #letter-container {
+.timer-container, #notes-container, #letter-container {
   background: #f8f0fb;
   padding: 1.5rem;
   border-radius: 20px;
@@ -88,7 +88,7 @@ body{
   justify-content: space-evenly;
 }
 
-.romantic-title, #journey-msg-container h2{
+.romantic-title, #journey-msg-container h2, #notes-title{
   font-family: 'Great Vibes', cursive;
   font-size: clamp(2rem, 8vw, 3.5rem);
   color: #d14d7a;
@@ -105,7 +105,7 @@ body{
   gap: 1rem;
 }
 
-.time-unit {
+.time-unit{
   background: #ffffff;
   padding: 1rem;
   border-radius: 12px;
@@ -149,7 +149,7 @@ body{
     gap: 1.5rem;
   }
     
-  .time-unit {
+  .time-unit, .wrapper {
     flex: 1 1 auto;
     max-width: 200px;
     padding: 1.2rem;
@@ -241,19 +241,60 @@ body{
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
-#gallery-container{
-  max-width: 900px;
+/* start */
+#gallery-container {
+  background: #f8f0fb;
+  padding: 1.5rem;
+  border-radius: 20px;
+  width: 90vw;
+  max-width: 700px;
+  margin: auto;
+  box-shadow: 0 5px 15px rgba(168, 129, 197, 0.1);
+  border: 1px solid #f0e1f7;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 10px;
 }
-#gallery-container ul{
-  border: 2px solid black;
-  width: 100%;
-  height: 1fr;
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+
+/*img {
+  max-width: 105px;
+  height: 190px;
+  border-radius: 1vh;
+}*/
+
+.tst-div{
+  border:2px solid black;
+  width: 50px;
+  height: 50px;
 }
-img{
-  width: 100px;
+
+/* end */
+
+
+.wrapper{
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  flex: 1 1 20%;
+  min-width: 100px;
+  max-width: 650px;
+  box-shadow: 0 3px 10px rgba(168, 129, 197, 0.1);
+  border: 2px solid #f4d9e8;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin: 0.3vh auto;
+}
+.wrapper p{
+  color: #a86a8e;
+  font-size: clamp(0.7rem, 3vw, 0.9rem);
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(209, 77, 122, 0.2);
+  background: #fff5f9;
 }

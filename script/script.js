@@ -9,84 +9,95 @@ const dateTimeCntr = document.getElementById("dt-container")
 const notesCntr = document.getElementById("notes-container")
 const galleryCntr = document.getElementById("gallery-container")
 const letterCntr = document.getElementById("letter-container")
-
 dateTimeCntr.style.display = "block"
 notesCntr.style.display = "none"
 galleryCntr.style.display = "none"
 letterCntr.style.display = "none"
 
+//Music
+
 //controls
-function showDateTime(){
-  dateTimeCntr.style.display = "block"
-  notesCntr.style.display = "none"
-  galleryCntr.style.display = "none"
-  letterCntr.style.display = "none"
-}
-function showNotes(){
-  dateTimeCntr.style.display = "none"
-  notesCntr.style.display = "block"
-  galleryCntr.style.display = "none"
-  letterCntr.style.display = "none"
-}
-function showGallery(){
-  dateTimeCntr.style.display = "none"
-  notesCntr.style.display = "none"
-  galleryCntr.style.display = "block"
-  letterCntr.style.display = "none"
-}
-function showLetter(){
-  dateTimeCntr.style.display = "none"
-  notesCntr.style.display = "none"
-  galleryCntr.style.display = "none"
-  letterCntr.style.display = "block"
+function showDateTime() {
+  dateTimeCntr.style.display = "block";
+  notesCntr.style.display = "none";
+  galleryCntr.style.display = "none";
+  letterCntr.style.display = "none";
 }
 
-function test(e){
-  if (e.target.classList["0"] != "actv-btn"){
-    e.target.classList.replace("not-actv-btn", "actv-btn")
-    e.target.disabled = true
-    if (e.target.value == "dt"){
-      notesBtn.classList.replace("actv-btn", "not-actv-btn")
-      galleryBtn.classList.replace("actv-btn", "not-actv-btn")
-      letterBtn.classList.replace("actv-btn", "not-actv-btn")
-      notesBtn.disabled = false
-      galleryBtn.disabled = false
-      letterBtn.disabled = false
-      showDateTime()
-    }
-    if (e.target.value == "notes"){
-      dateTimeBtn.classList.replace("actv-btn", "not-actv-btn")
-      galleryBtn.classList.replace("actv-btn", "not-actv-btn")
-      letterBtn.classList.replace("actv-btn", "not-actv-btn")
-      dateTimeBtn.disabled = false
-      galleryBtn.disabled = false
-      letterBtn.disabled = false
-      showNotes()
-    }
-    if (e.target.value == "gallery"){
-      notesBtn.classList.replace("actv-btn", "not-actv-btn")
-      dateTimeBtn.classList.replace("actv-btn", "not-actv-btn")
-      letterBtn.classList.replace("actv-btn", "not-actv-btn")
-      notesBtn.disabled = false
-      dateTimeBtn.disabled = false
-      letterBtn.disabled = false
-      showGallery()
-    }
-    if (e.target.value == "letter"){
-      notesBtn.classList.replace("actv-btn", "not-actv-btn")
-      galleryBtn.classList.replace("actv-btn", "not-actv-btn")
-      dateTimeBtn.classList.replace("actv-btn", "not-actv-btn")
-      notesBtn.disabled = false
-      galleryBtn.disabled = false
-      dateTimeBtn.disabled = false
-      showLetter()
+function showNotes() {
+  dateTimeCntr.style.display = "none";
+  notesCntr.style.display = "block";
+  galleryCntr.style.display = "none";
+  letterCntr.style.display = "none";
+}
+
+function showGallery() {
+  dateTimeCntr.style.display = "none";
+  notesCntr.style.display = "none";
+  galleryCntr.style.display = "block";
+  letterCntr.style.display = "none";
+}
+
+function showLetter() {
+  dateTimeCntr.style.display = "none";
+  notesCntr.style.display = "none";
+  galleryCntr.style.display = "none";
+  letterCntr.style.display = "block";
+}
+
+function test(e) {
+  if (e.target.classList[0] !== "actv-btn") {
+    // Use !== instead of != for strict comparison
+    e.target.classList.replace("not-actv-btn", "actv-btn");
+    e.target.disabled = true;
+    if (e.target.value === "dt") {
+      // Use === instead of == for strict comparison
+      notesBtn.classList.replace("actv-btn", "not-actv-btn");
+      galleryBtn.classList.replace("actv-btn", "not-actv-btn");
+      letterBtn.classList.replace("actv-btn", "not-actv-btn");
+      notesBtn.disabled = false;
+      galleryBtn.disabled = false;
+      letterBtn.disabled = false;
+      showDateTime();
+      stopMusic(); // Stop music when switching away
+    } else if (e.target.value === "notes") {
+      // Use else if for mutually exclusive conditions
+      dateTimeBtn.classList.replace("actv-btn", "not-actv-btn");
+      galleryBtn.classList.replace("actv-btn", "not-actv-btn");
+      letterBtn.classList.replace("actv-btn", "not-actv-btn");
+      dateTimeBtn.disabled = false;
+      galleryBtn.disabled = false;
+      letterBtn.disabled = false;
+      showNotes();
+      stopMusic(); // Stop music when switching away
+    } else if (e.target.value === "gallery") {
+      // Use else if for mutually exclusive conditions
+      notesBtn.classList.replace("actv-btn", "not-actv-btn");
+      dateTimeBtn.classList.replace("actv-btn", "not-actv-btn");
+      letterBtn.classList.replace("actv-btn", "not-actv-btn");
+      notesBtn.disabled = false;
+      dateTimeBtn.disabled = false;
+      letterBtn.disabled = false;
+      showGallery();
+      stopMusic(); // Stop music when switching away
+    } else if (e.target.value === "letter") {
+      // Use else if for mutually exclusive conditions
+      notesBtn.classList.replace("actv-btn", "not-actv-btn");
+      galleryBtn.classList.replace("actv-btn", "not-actv-btn");
+      dateTimeBtn.classList.replace("actv-btn", "not-actv-btn");
+      notesBtn.disabled = false;
+      galleryBtn.disabled = false;
+      dateTimeBtn.disabled = false;
+      showLetter();
+      playMusic();
     }
   }
 }
-dateTimeBtn.addEventListener("click", test)
-notesBtn.addEventListener("click", test)
-galleryBtn.addEventListener("click", test)
-letterBtn.addEventListener("click", test)
+dateTimeBtn.addEventListener("click", test);
+notesBtn.addEventListener("click", test);
+galleryBtn.addEventListener("click", test);
+letterBtn.addEventListener("click", test);
+
 
 //date time
 const startDate = new Date('2025-03-26T00:00:00');
